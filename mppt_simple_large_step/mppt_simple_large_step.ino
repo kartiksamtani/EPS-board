@@ -27,11 +27,11 @@ int steps = 8; // step size of the PWM values if the operating point of the sola
 int steps2 = 8; // step size of the PWM values if the operating point of the solar cell is such that V_(solar) < V_(mpp)
 long unsigned int time_stamp; // a variable which stores the appropriate time stamp for data logging purpose
 
-int meas_current()
+int meas_current() // Routine to measure the current flowing into the dc-dc converter, Output - current value in mA in integer format
 {
   int i = 0;
-  int samples = 100;
-  float sum=0;
+  int samples = 100; // number of samples over which the average is to be taken
+  float sum=0; // accumulator variable for finding the average current
   int value;
   int new_value;
   float temp_current;
@@ -43,7 +43,7 @@ int meas_current()
   {
   for(i=0;i<samples;i++)
    sum+=analogRead(A5);
-   value = sum/samples;
+   value = sum/samples; // callibration steps determined by experimentation using the laboratory source which gave a constant current flowing through the sensor
    new_value = value - 158;
    temp_current = new_value*1.272;
    if(temp_current<0)
@@ -54,14 +54,14 @@ int meas_current()
    suma+=current;
    //suma+=temp_current;
    }
-   avg_current = (suma/200)*10;
-   return avg_current+40;
+   avg_current = (suma/200)*10; // this step makes the 3 digit value of current in mA insesitive at the unit's place
+   return avg_current+40; // while returning the value of current, an offset of 40 was given to get the actual value of current for data-logging purposes
 }
 
-float meas_voltage()
+float meas_voltage() // Routine to measure the voltage across the input terminals of dc-dc converter, Output - voltage value in volts in integer format
 {
   int i = 0;
-  int samples = 200;
+  int samples = 200; // number of values over which the average is to be taken
   float sum=0;
   int value;
   int new_value;
@@ -75,7 +75,6 @@ float meas_voltage()
   sum = 0;
   return voltage*3.5;
 }
-
 
 void setup() {
   pinMode(A2,INPUT); // Declaring pins as inputs or outputs 
