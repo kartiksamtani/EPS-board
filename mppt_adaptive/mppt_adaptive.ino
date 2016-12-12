@@ -99,7 +99,7 @@ void loop()
   if(voltage > prev_voltage)
    {
      if(start_incr_l == 1)
-     steps = steps*2;
+     steps = steps+2;
      //steps2 = steps2/8;
      if(steps>upper_limit_l)
       steps = upper_limit_l;
@@ -158,7 +158,7 @@ else
   else
    {
     if(start_incr_l == 1)
-    steps = steps*2;
+    steps = steps+2;
     //steps2 = steps2/8;
     if(steps>upper_limit_l)
      steps = upper_limit_l;

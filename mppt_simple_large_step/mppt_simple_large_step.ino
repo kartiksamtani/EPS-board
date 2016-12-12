@@ -59,7 +59,6 @@ float meas_voltage()
 
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(A2,INPUT);
   pinMode(A5,INPUT);
   pinMode(2,OUTPUT);
@@ -70,7 +69,6 @@ void setup() {
 
 void loop() 
 {
-  
  current = meas_current();
  voltage = meas_voltage();
  time_stamp = millis();
