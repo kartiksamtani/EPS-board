@@ -8,6 +8,8 @@
   * A5 - Analog Input from the current sensor
   * A2 - Analog Input from the voltage sensor
   * 2 - PWM output to the MOSFET of the power converter
+  * Resitor divider as the voltage sensor (56K an 22k OUTPUT across 22K)
+  * ACS712 based current sensor
 
   Created 08 JUNE 2016
   By Kartik Samtani
@@ -18,7 +20,7 @@ float voltage=0.0; // stores the voltage applied across the input terminals of t
 byte pwm_value = 0; // by defualt the PWM value applied to the MOSFET of the DC-DC converter
 long unsigned int time_stamp; // a variable which stores the appropriate time stamp for data logging purpose
 
-int meas_current() // Routine to measure the current flowing into the dc-dc converter, Output - current value in mA in integer format
+int meas_current() // Routine to measure the current flowing into the dc-dc converter using ACS712 sensor, Output - current value in mA in integer format
 {
   int i = 0;
   int samples = 100; // number of samples over which the average is to be taken
